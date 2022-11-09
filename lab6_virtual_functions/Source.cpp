@@ -1,11 +1,3 @@
-/* Завод
--Создать в базовом классе чисто виртуальные функции 
--Задать в базовом классе деструктор как виртуальный
--В головной функции динамически создать массив указателей на базовый класс. Заполнить массив указателями на
-динамически создаваемые объекты производных классов (P1, P11, P2). Для каждого элемента массива проверить
-работу виртуальных функций. Удалить из памяти динамически выделенные объекты.
-*/
-
 #include <stdlib.h>
 #include <string.h>
 #include <iostream> 
@@ -91,9 +83,6 @@ public:
 
 class CEO : virtual public Factory
 {
-private:
-	string CEOInfo = "CEO";
-
 protected:
 	string Name;
 	int Age;
@@ -101,11 +90,7 @@ public:
 	CEO(string Factory_name = "", string City = "", string Name = "", int Age = 0) :Factory(City, Factory_name), Name(Name), Age(Age) {};
 	~CEO()
 	{
-		CEOInfo.clear();
-	}
-	const string& GetCEOInfo()const
-	{
-		return CEOInfo;
+		Name.clear();
 	}
 	const string& getName() const
 	{
@@ -140,7 +125,6 @@ public:
 	{
 		cout << "The factory's name is " << Factory_name << endl;
 		cout << "It is llocated in " << City << endl;
-		cout << CEOInfo << endl;
 		cout << "The CEO name is " << Name << endl;
 		cout << "He's age is " << Age << endl;
 	}
